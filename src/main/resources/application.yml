@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/sistemaSTB?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: M203040vg*
+
+
