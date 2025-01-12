@@ -3,5 +3,6 @@ spring:
     url: jdbc:mysql://localhost/sistemaSTB?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: M203040vg*
-
+  jpa:
+    generate-ddl: true
 
