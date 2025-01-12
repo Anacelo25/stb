@@ -1,6 +1,7 @@
-package com.bank.stb.contas;
+package com.bank.stb.modelo;
 
 import com.bank.stb.enums.StatusTransacao;
+import com.bank.stb.enums.TipoTransacao;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.math.BigDecimal;
@@ -26,6 +27,9 @@ public class Conta {
     @Column(nullable = false, name = "Version")
     private Long versao;
 
+    @Column(nullable = false, name = "Fase_Transacao")
+    private boolean faseTransacao;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusTransacao status;
@@ -36,13 +40,28 @@ public class Conta {
     @Column(nullable = false)
     private Date ultimaTransacao;
 
-    @Column(nullable = false)
-    private boolean registroConfirmado;
-
-    @Column(nullable = true)
+    @Column(nullable = true, name = "Registro_Dos_Saldos")
     private BigDecimal backupSaldo;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "Registro_Das_Tentativas")
     private Integer registrosTentativas;
 
+    @Column(nullable = false, name = "CommitAttempt")
+    private Integer tentativasTransacaoConfirmada;
+
+    @Column(nullable = false)
+    private boolean transacaoRevertida;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoTransacao tipoTransacao;
+
+    @Column(nullable = true, name = "Saldo_Anterior")
+    private BigDecimal saldoAnterior;
+
+    @Column(nullable = false, name = "Tempo_De_Transacao")
+    private Long tempoTransacao;
+
+    @Column
+    private String recursoId;
 }
