@@ -7,7 +7,7 @@ import java.util.Date;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Conta")
+@Table(name = "Conta", indexes = {@Index(name = "", columnList = "")})
 public class Conta {
 
     @Id
@@ -17,7 +17,7 @@ public class Conta {
     @Column(nullable = false, unique = true)
     private String numeroConta;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 17, scale = 2)
     private BigDecimal saldo;
 
     @Column(nullable = false)
@@ -34,7 +34,7 @@ public class Conta {
     @Enumerated(EnumType.STRING)
     private StatusTransacao status;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String transacaoId;
 
     @Column(nullable = false)
@@ -62,6 +62,81 @@ public class Conta {
     @Column(nullable = false, name = "Tempo_De_Transacao")
     private Long tempoTransacao;
 
+    @Column(nullable = true)
+    private String backupDados;
+
     @Column
     private String recursoId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNumeroConta() {
+        return numeroConta;
+    }
+
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
+
+    public String getMoeda() {
+        return moeda;
+    }
+
+    public Long getVersao() {
+        return versao;
+    }
+
+    public boolean isFaseTransacao() {
+        return faseTransacao;
+    }
+
+    public StatusTransacao getStatus() {
+        return status;
+    }
+
+    public String getTransacaoId() {
+        return transacaoId;
+    }
+
+    public Date getUltimaTransacao() {
+        return ultimaTransacao;
+    }
+
+    public BigDecimal getBackupSaldo() {
+        return backupSaldo;
+    }
+
+    public Integer getRegistrosTentativas() {
+        return registrosTentativas;
+    }
+
+    public Integer getTentativasTransacaoConfirmada() {
+        return tentativasTransacaoConfirmada;
+    }
+
+    public boolean isTransacaoRevertida() {
+        return transacaoRevertida;
+    }
+
+    public TipoTransacao getTipoTransacao() {
+        return tipoTransacao;
+    }
+
+    public BigDecimal getSaldoAnterior() {
+        return saldoAnterior;
+    }
+
+    public Long getTempoTransacao() {
+        return tempoTransacao;
+    }
+
+    public String getBackupDados() {
+        return backupDados;
+    }
+
+    public String getRecursoId() {
+        return recursoId;
+    }
 }
